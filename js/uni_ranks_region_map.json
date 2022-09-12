@@ -1,0 +1,33 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 300,
+    "data": {
+      "url": "../data/world-110m.json",
+      "format": {
+        "type": "topojson",
+        "feature": "counties"
+      }
+    },
+    "transform": [{
+      "lookup": "id",
+      "from": {
+        "data": {
+          "url": "../data/uni_ranks_2017.csv"
+        },
+        "key": "id",
+        "fields": ["international_students"]
+      }
+    }],
+    "projection": {
+      "type": "equalEarth"
+    },
+    "mark": "geoshape",
+    "encoding": {
+      "color": {
+        "field": "international_students",
+        "type": "quantitative"
+      }
+    }
+  }
+  
