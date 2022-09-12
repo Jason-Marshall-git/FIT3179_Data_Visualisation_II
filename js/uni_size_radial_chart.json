@@ -1,0 +1,23 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "description": "A simple radial chart with embedded data.",
+    "width": 500,
+    "height": 500,
+    "data": {
+        "url": "../data/uni_ranks_2017.csv"
+    },
+    "layer": [{
+      "mark": {"type": "arc", "innerRadius": 20, "stroke": "#fff"}
+    },{
+      "mark": {"type": "text", "radiusOffset": 10},
+      "encoding": {
+        "text": {"field": "size", "type": "quantitative"}
+      }
+    }],
+    "encoding": {
+      "theta": {"field": "size", "type": "quantitative", "stack": true},
+      "radius": {"field": "size", "scale": {"type": "sqrt", "zero": true, "rangeMin": 20}},
+      "color": {"field": "size", "type": "nominal", "legend": null}
+    }
+  }
+  

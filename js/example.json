@@ -1,0 +1,12 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "International students in universities around the world" },
+    "data": {
+        "url": "../data/uni_ranks_2017.csv"
+    },
+    "mark": "bar",
+    "encoding": {
+        "y": { "field": "country", "type": "nominal" },
+        "x": { "field": "international_students", "type": "quantitative" }
+    }
+}
