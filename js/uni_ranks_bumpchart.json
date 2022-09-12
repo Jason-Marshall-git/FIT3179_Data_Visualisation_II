@@ -1,0 +1,20 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 500,
+    "height": 300,
+    "description": "University ranks over time",
+    "data": {"url": "../data/uni_ranks.csv"},
+    "mark": {
+      "type": "line",
+      "point": true
+    },
+    "transform": [{
+        "filter": {"field": "rank_display", "range": [1, 10]}
+      }],
+    "encoding": {
+      "x": {"field": "year", "type":"ordinal", "title": "Year"},
+      "y": {"field": "rank_display", "type": "nominal", "sort":"descending", "title": "Rank"},
+      "color": {"field": "university", "type": "nominal", "title": "University"}
+    }
+  }
+  

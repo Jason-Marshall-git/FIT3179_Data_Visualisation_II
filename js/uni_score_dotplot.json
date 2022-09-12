@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "description": "A ranged dot plot that uses 'layer' to convey the differing scores of the top universities",
+  "data": {"url": "../data/uni_ranks.csv"},
+  "transform": [
+    {
+      "filter": {
+        "field": "rank_display",
+        "range": [1,10]
+      }
+    },
+    {
+      "filter": {
+        "field": "year",
+        "oneOf": [2017, 2020, 2022]
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "score",
+      "type": "quantitative",
+      "title": "Score (%)",
+      "scale": {"domain": [90,100]}
+    },
+    "y": {
+      "field": "university",
+      "type": "nominal",
+      "title": "University",
+      "sort": "rank_display",
+      "axis": {
+        "offset": 5,
+        "minExtent": 70,
+        "ticks": false,
+        "domain": false
+      }
+    }
+  },
+  "layer": [
+    {
+      "mark": "line",
+      "encoding": {
+        "detail": {
+          "field": "university",
+          "type": "nominal"
+        },
+        "color": {"value": "#db646f"}
+      }
+    },
+    {
+      "mark": {
+        "type": "point",
+        "filled": true
+      },
+      "encoding": {
+        "color": {
+          "field": "year",
+          "type": "ordinal",
+          "scale": {
+            "domain": [2017, 2020, 2022],
+            "range": ["#FF0000", "#0000FF","#FF00FF"]
+          },
+          "title": "Year"
+        },
+        "size": {"value": 100},
+        "opacity": {"value": 1}
+      }
+    }
+  ]
+}
