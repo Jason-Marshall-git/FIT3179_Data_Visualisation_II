@@ -2,7 +2,7 @@
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "description": "A simple pie chart with labels.",
     "data": {
-      "url": "../data/uni_ranks_2017.csv"
+      "url": "../data/uni_ranks_2020.csv"
     },
     "encoding": {
       "theta": {"aggregate":"count", "field": "size", "type": "quantitative", "stack": true},

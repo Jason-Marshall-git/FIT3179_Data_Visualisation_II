@@ -1,0 +1,36 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {"url": "../data/uni_ranks_2020.csv"},
+    "layer": [
+      {
+        "mark": "bar",
+        "encoding": {
+          "x": {
+            "field": "country",
+            "type": "nominal",
+            "title": "Country"  
+          },
+          "y": {
+            "aggregate": "mean",
+            "field": "student_faculty_ratio",
+            "type": "quantitative",
+            "title": "Mean of student to faculty ratio"
+          },
+          "detail": {"field":"country"}
+        }
+      },
+      {
+        "mark": "rule",
+        "encoding": {
+          "y": {
+            "aggregate": "mean",
+            "field": "student_faculty_ratio",
+            "type": "quantitative"
+          },
+          "color": {"value": "red"},
+          "size": {"value": 3}
+        }
+      }
+    ]
+  }
+  
