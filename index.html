@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
 
-    <!-- <link rel="stylesheet" href="css/layout.css"> -->
+    <link rel="stylesheet" href="css/layout.css">
 
     <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
@@ -18,6 +18,124 @@
     <script src="js/vega_lite_vis.js"></script>
 </head>
 <body>
+    <header class="section-row">
+        <div id="title_div">
+            <h1>
+                QS Universirty Ranks 2017-2022 visualisation &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+            </h1>
+        </div>
+        <div id="qs">
+            <img src="../images/QS_logo.jpg">
+        </div>
+    </header>
+
+    <!-- Choropleth map section -->
+    <section class="section-col">
+        <div id="text_div">
+            <p>
+                The visualisation is to show the top performaing universities in the world 
+                so that they can be compared when students are deciding where to attend to 
+                complete their degree. We will look at the university breakdown globally 
+                and then break this down to the top performing universities in the world.
+                <br><br>
+                Below we can see a world map showing the countries where the top universities 
+                in the world reside, as well as the amount of international students from other 
+                countries that study in the particular country <span class="special_text">per 10,000 population</span>.
+                <br><br>
+                <span class="special_text">Click on the buttons below</span> to see the map shoing the faculty counts for these same 
+                universities. Can you see the comparisons from both maps? What countries have 
+                the biggest changes from students to faculty?
+                <br><br>
+                Below if the breakdown of the <span class="special_text">student to faculty ratio</span> for each country so we 
+                can see the disparity between countries. From this bar chart, we can see that 
+                the average rartio is roughly 14, which means there are approximately <span class="special_text">14 students</span> 
+                for every faculty memeber at univerisites in these countries. However, there are 
+                some major outliers with countries like Syria and Morocco having a much larger ratio.
+            </p>
+        </div>
+
+        <section class="button_section">
+            <button id="button" onclick='mapChangeStudents()'>International students map</button>
+            <button id="button" onclick='mapChangeFaculty()'>Faculty map</button>
+        </section>
+
+        <div id="choropleth_map_student" style="display: block"></div>
+        <div id="choropleth_map_faculty" style="display: none"></div>
+
+        <script>
+            function mapChangeStudents() {
+                document.getElementById("choropleth_map_student").style.display="block";
+                document.getElementById("choropleth_map_faculty").style.display="none";
+            }
+            function mapChangeFaculty() {
+                document.getElementById("choropleth_map_student").style.display="none";
+                document.getElementById("choropleth_map_faculty").style.display="block";
+            }
+        </script>
+
+    </section>    
     
+    <!-- Student-faculty ratio bar chart section -->
+    <section class="section-col">
+        <div id="bar_chart"></div>
+    </section>
+
+    <!-- Rank bump chart section -->
+    <section class="section-row">
+        <div id="bump_chart"></div>
+        <div id="text_div">
+            <p>
+                Here we can see the top ranked univeristies in the world. We can see that most of them 
+                resisde in the US with <span class="special_text">60%</span> of the top 10 universities based in <span class="special_text">America</span>. We also have 
+                the likes of <span class="special_text">England</span> and <span class="special_text">Switzerland</span> appearing in the top ranked universities. <span class="special_text">Massachusetts 
+                    Institute of Technology (MIT)</span> has stayed at number 1 for the last 5 years which shows its 
+                prestige and high calibre student output. This year the <span class="special_text">University of Oxford</span> moved 3 places 
+                from last year to 2nd in the top 10 showing its strong improvement, as well as <span class="special_text">University of 
+                    Cambridge</span> which moved from 7th to 3rd, showing that <span class="special_text">England's</span> university standards have 
+                increased phenomenally over the last year. 
+            </p>
+        </div>
+    </section>
+
+    <!-- Score dot plot scetion -->
+    <section class="section-row">
+        <div id="text_div">
+            <p>
+                Here we can see the score distribution the top 10 univerisities. As expected <span class="special_text">MIT</span> have led 
+                the world with a perfect score for the last 5 years. We can also the the massive increase 
+                of the <span class="special_text">University of Oxford</span> scores which led to them jumping to the number 2 spot this year. 
+                The biggest discrpency of the scores if from the <span class="special_text">Univeristy of Cambridge, Imperial College 
+                    London</span> and <span class="special_text">University of Oxford</span>. This shows that <span class="special_text">England's</span> education standards increased 
+                substantially in the last 5 yeards comparatively to other countries.
+            </p>
+        </div>
+        <div id="dot_plot"></div>
+    </section>
+
+    <!-- Size pie chart section -->
+    <section class="section-row">
+        <div id="pie_chart"></div>
+        <div id="text_div">
+            <p>
+                Here we can see the distribution of university sizes, taking all the universities in the world
+                and grouping them into sizes. It is evident that almost half of thw worlds universities are 
+                considered <span class="special_text">large</span> (meaing they contain more than <span class="special_text">12,000</span> students, but less than <span class="special_text">30,000</span>). <span class="special_text">Medium</span> 
+                (greater than <span class="special_text">5,000</span> students, but less than <span class="special_text">12,000</span> students) and <span class="special_text">Extra large</span> (greater than <span class="special_text">30,000</span> students) 
+                sized universities are quite similar in distibution. <span class="special_text">Small</span> universities (Less than <span class="special_text">5,000</span> students) 
+                are not very common accross the world meaining it may be hard for these facilities to run with a 
+                low student count.
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <p>
+            Visualisation created by Jason Marshall 29730341
+        </p>
+    </footer>
 </body>
 </html>

@@ -1,6 +1,9 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "data": {"url": "../data/uni_ranks_2020.csv"},
+    "title":"The student to faculty ratio per country (2022)",
+    "width": 1300,
+    "height": 350,
+    "data": {"url": "https://raw.githubusercontent.com/Jason-Marshall-git/FIT3179_Data_Visualisation_II/main/data/uni_ranks_2022.csv"},
     "layer": [
       {
         "mark": "bar",
@@ -8,7 +11,7 @@
           "x": {
             "field": "country",
             "type": "nominal",
-            "title": "Country"  
+            "title": "Country" 
           },
           "y": {
             "aggregate": "mean",
@@ -16,7 +19,12 @@
             "type": "quantitative",
             "title": "Mean of student to faculty ratio"
           },
-          "detail": {"field":"country"}
+          "detail": {"field":"country"},
+          "color":{"value": "orange"},
+          "tooltip": [
+            {"field": "country", "type": "nominal", "title": "Country"},
+            {"field": "student_faculty_ratio", "type": "quantitative", "title": "Student faculty ratio"}
+          ]
         }
       },
       {
@@ -28,7 +36,10 @@
             "type": "quantitative"
           },
           "color": {"value": "red"},
-          "size": {"value": 3}
+          "size": {"value": 3},
+          "tooltip": [
+            {"aggregate":"mean", "field": "student_faculty_ratio", "type": "quantitative", "title": "Average student faculty ratio (globally)"}
+          ]
         }
       }
     ]

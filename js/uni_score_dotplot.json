@@ -1,7 +1,10 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Top 10 university scores (2017-2022)",
+  "width": 350,
+  "height": 250,
   "description": "A ranged dot plot that uses 'layer' to convey the differing scores of the top universities",
-  "data": {"url": "../data/uni_ranks.csv"},
+  "data": {"url": "https://raw.githubusercontent.com/Jason-Marshall-git/FIT3179_Data_Visualisation_II/main/data/uni_ranks.csv"},
   "transform": [
     {
       "filter": {
@@ -44,7 +47,7 @@
           "field": "university",
           "type": "nominal"
         },
-        "color": {"value": "#db646f"}
+        "color": {"value": "#a63603"}
       }
     },
     {
@@ -58,7 +61,7 @@
           "type": "ordinal",
           "scale": {
             "domain": [2017, 2020, 2022],
-            "range": ["#FF0000", "#0000FF","#FF00FF"]
+            "range": ["#fdbe85", "#fd8d3c", "#e6550d"]
           },
           "title": "Year"
         },

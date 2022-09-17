@@ -1,17 +1,26 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": "University size distributions (2022)",
+    "width": 300,
+    "height": 300,
     "description": "A simple pie chart with labels.",
     "data": {
-      "url": "../data/uni_ranks_2020.csv"
+      "url": "https://raw.githubusercontent.com/Jason-Marshall-git/FIT3179_Data_Visualisation_II/main/data/uni_ranks_2022.csv"
     },
     "encoding": {
       "theta": {"aggregate":"count", "field": "size", "type": "quantitative", "stack": true},
-      "color": {"field": "size", "type": "nominal"}
+      "color": {
+        "field": "size", 
+        "type": "nominal",
+        "scale": {
+          "range": ["#fdbe85", "#fd8d3c", "#e6550d", "#a63603"]
+        }
+      }
     },
     "layer": [{
-      "mark": {"type": "arc", "outerRadius": 80}
+      "mark": {"type": "arc", "radius": 85, "radius2": 45}
     }, {
-        "mark": {"type": "text", "radius": 90},
+        "mark": {"type": "text", "radius": 100, "fill": "black"},
         "encoding": {
           "text": {"aggregate":"count", "field": "size", "type": "nominal"}
         }

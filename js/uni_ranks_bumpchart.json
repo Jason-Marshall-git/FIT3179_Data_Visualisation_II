@@ -1,9 +1,10 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 500,
-    "height": 300,
+    "title": "Top 10 ranked universities globally (2017-2022)",
+    "width": 400,
+    "height": 250,
     "description": "University ranks over time",
-    "data": {"url": "../data/uni_ranks.csv"},
+    "data": {"url": "https://raw.githubusercontent.com/Jason-Marshall-git/FIT3179_Data_Visualisation_II/main/data/uni_ranks.csv"},
     "mark": {
       "type": "line",
       "point": true
@@ -14,7 +15,7 @@
     "encoding": {
       "x": {"field": "year", "type":"ordinal", "title": "Year"},
       "y": {"field": "rank_display", "type": "nominal", "sort":"descending", "title": "Rank"},
-      "color": {"field": "university", "type": "nominal", "title": "University"}
+      "color": {"field": "university", "type": "nominal", "title": "University", "sort":"rank_display"}
     }
   }
   
