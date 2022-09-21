@@ -1,8 +1,7 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title": "University size distributions (2022)",
-    "width": 300,
-    "height": 300,
+    "width": 400,
     "description": "A simple pie chart with labels.",
     "data": {
       "url": "https://raw.githubusercontent.com/Jason-Marshall-git/FIT3179_Data_Visualisation_II/main/data/uni_ranks_2022.csv"

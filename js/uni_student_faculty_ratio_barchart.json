@@ -1,31 +1,76 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
     "title":"The student to faculty ratio per country (2022)",
-    "width": 1300,
-    "height": 350,
+    "width": 800,
+    "height": 400,
     "data": {"url": "https://raw.githubusercontent.com/Jason-Marshall-git/FIT3179_Data_Visualisation_II/main/data/uni_ranks_2022.csv"},
     "layer": [
       {
-        "mark": "bar",
-        "encoding": {
-          "x": {
-            "field": "country",
-            "type": "nominal",
-            "title": "Country" 
+        "layer":[
+          {
+          "mark": "bar",
+          "encoding": {
+            "x": {
+              "field": "country",
+              "type": "nominal",
+              "title": "Country",
+              "axis": {
+                "labels": false,
+                "ticks": false
+              }
+            },
+            "y": {
+              "aggregate": "mean",
+              "field": "student_faculty_ratio",
+              "type": "quantitative",
+              "title": "Mean of student to faculty ratio"
+            },
+            "detail": {"field":"country"},
+            "color":{"value": "#FFD580"},
+            "tooltip": [
+              {"field": "country", "type": "nominal", "title": "Country"},
+              {"field": "student_faculty_ratio", "type": "quantitative", "title": "Student faculty ratio"}
+            ]
+          }
+
+        },
+        {
+          "mark": "bar",
+          "transform": [
+            {"filter": "datum.student_faculty_ratio >= 14"},
+            {"calculate": "14", "as": "baseline"}
+          ],
+          "encoding": {
+            "x": {"field": "country", "type": "nominal"},
+            "y": {"field": "baseline", "type": "quantitative"},
+            "y2": {"field": "student_faculty_ratio"},
+            "color": {"value": "darkorange"}
+          }
+        },
+        {
+          "mark": {
+            "type": "text",
+            "align": "right",
+            "baseline": "middle",
+            "dx": 285,
+            "dy": -180,
+            "fontSize": 11.5,
+            "fontStyle": "italic",
+            "fontWeight": "bold"
           },
-          "y": {
-            "aggregate": "mean",
-            "field": "student_faculty_ratio",
-            "type": "quantitative",
-            "title": "Mean of student to faculty ratio"
-          },
-          "detail": {"field":"country"},
-          "color":{"value": "orange"},
-          "tooltip": [
-            {"field": "country", "type": "nominal", "title": "Country"},
-            {"field": "student_faculty_ratio", "type": "quantitative", "title": "Student faculty ratio"}
-          ]
+          "encoding": {
+              "text": {"field": "country", "type": "nominal"},
+              "color": {"value": "black"},
+              "opacity": {
+              "condition": {
+                "test": "datum['country'] == 'Syrian Arab Republic'",
+                "value": 1
+              },
+              "value": 0
+              }
+          }
         }
+      ]
       },
       {
         "mark": "rule",
