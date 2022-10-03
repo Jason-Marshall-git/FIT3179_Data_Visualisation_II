@@ -52,10 +52,11 @@ h1 {
 }
 
 #button {
-    background-color: darkorange;
+    background-color: orange;
     font-weight: bold;
     color: black;
     border-radius: 25px;
+    border-color: darkorange;
     padding: 10px 10px 10px 10px;
 }
 

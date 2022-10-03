@@ -39,3 +39,10 @@ vegaEmbed("#bar_chart", spec6)
     // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
   })
   .catch(console.error);
+
+var spec7 = "js/uni_student_faculty_bubblechart.json";
+vegaEmbed("#bubble_chart", spec7)
+  .then(function (result) {
+    // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+  })
+  .catch(console.error);

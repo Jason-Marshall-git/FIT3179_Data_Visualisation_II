@@ -44,7 +44,11 @@
             "x": {"field": "country", "type": "nominal"},
             "y": {"field": "baseline", "type": "quantitative"},
             "y2": {"field": "student_faculty_ratio"},
-            "color": {"value": "darkorange"}
+            "color": {"value": "darkorange"},
+            "tooltip": [
+              {"field": "country", "type": "nominal", "title": "Country"},
+              {"field": "student_faculty_ratio", "type": "quantitative", "title": "Student faculty ratio"}
+            ]
           }
         },
         {
@@ -54,7 +58,7 @@
             "baseline": "middle",
             "dx": 285,
             "dy": -180,
-            "fontSize": 11.5,
+            "fontSize": 13,
             "fontStyle": "italic",
             "fontWeight": "bold"
           },

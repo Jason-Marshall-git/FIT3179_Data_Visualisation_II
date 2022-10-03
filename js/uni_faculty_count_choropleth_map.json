@@ -16,7 +16,7 @@
             "as": "note"
           }
         ],
-        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "black"},
+        "mark": {"type": "geoshape", "fill": "lightgray", "stroke": "grey"},
         "encoding": {"tooltip": {"field": "note"}}
       },
       {
@@ -35,7 +35,7 @@
             "calculate": "datum.faculty_count/datum.population_2022 * 10000", "as": "faculty_count_per_pop"
           }
         ],
-        "mark": {"type": "geoshape", "stroke": "black"},
+        "mark": {"type": "geoshape", "stroke": "grey"},
         "encoding": {
           "color": {
             "field": "faculty_count_per_pop",

@@ -1,0 +1,137 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 540,
+    "height": 500,
+    "autosize": "pad",
+    "title": "University international student/facuty count per continent (2022)",
+    "data": {
+        "url": "https://raw.githubusercontent.com/Jason-Marshall-git/FIT3179_Data_Visualisation_II/main/data/uni_ranks_2022.csv"
+    },
+    "params": [
+        {   
+            "name": "Continent_selection",
+            "bind": {
+            "input": "select",
+            "options": [
+                null,
+                "North America",
+                "South America",
+                "Europe",
+                "Africa",
+                "Asia",
+                "Oceania"
+            ],
+            "labels":[
+                "Show All",
+                "North America",
+                "South America",
+                "Europe",
+                "Africa",
+                "Asia",
+                "Oceania"
+            ],
+            "name": "Continent Selection: "            
+        }
+        }
+    ],
+    "transform": [
+        {"filter": "datum.international_students > 0"},
+        {"filter": "datum.faculty_count > 0"},
+        {"filter": "Continent_selection == null || datum.region == Continent_selection"}
+    ],
+    "encoding": {
+        "x": {
+            "field": "international_students",
+            "type": "quantitative",
+            "title": "International Students",
+            "axis": {"tickCount": 5},
+            "scale": {"type": "log", "domain": [1, 100000]}
+        },
+        "y": {
+            "field": "faculty_count",
+            "type": "quantitative",
+            "title": "Faculty Count",
+            "axis": {"tickCount": 4},
+            "scale": {"type": "log", "domain": [1, 100000]}
+        },
+        "color": {"legend": {
+            "orient": "right", "padding": 30, "offset": 80, "labelFontSize": 13, "titleFontSize": 17
+        }}
+    },
+    "layer": [
+        {
+            "mark": "circle",
+            "encoding": {
+                "size": {
+                    "field": "student_faculty_ratio",
+                    "title": "Student faculty ratio",
+                    "type": "quantitative",
+                    "scale": {
+                        "type": "threshold",
+                        "domain": [1, 5, 10, 25, 50, 100],
+                        "range": [10, 50, 150, 200, 300]
+                    },
+                    "legend": {"format": ".1s", "orient": "right", "padding": 20, "labelFontSize": 13, "titleFontSize": 17}
+                },
+                "color": {
+                "field": "region",
+                "title": "Continent",
+                "type": "nominal",
+                "scale": {
+                    "domain": [
+                        "North America",
+                        "South America",
+                        "Europe",
+                        "Africa",
+                        "Asia",
+                        "Oceania"
+                    ],
+                    "range": [
+                        "#e41a1c",
+                        "#984ea3",
+                        "#ff7f00",
+                        "#a6cee3",
+                        "#377eb8",
+                        "#a65628"
+                    ]
+                }
+                },
+                "opacity": { "value": 0.6},
+                "tooltip": [
+                    {"field": "university", "type":"nominal", "title": "University"},
+                    {"field": "country", "type": "nominal", "title": "Country"},
+                    {"field": "international_students", "type": "quantitative", "format": ",", "title": "International students"},
+                    {"field": "faculty_count", "type": "quantitative", "format": ",", "title": "Faculty count"},
+                    {"field": "student_faculty_ratio", "type": "quantitative", "format": ",", "title": "Student faculty ratio"}
+                ]
+            }
+        },
+        {
+        "mark": {
+            "type": "text",
+            "align": "left",
+            "baseline": "middle",
+            "fontSize": 12,
+            "fontStyle": "bold italic"
+        },
+        "encoding": {
+        "text": {"field": "university", "type": "nominal"},
+        "color": {"value": "black"},
+        "opacity": {
+            "condition": {
+                "test": "datum['country'] === 'Australia' && datum['rank_display'] > 0 && datum['rank_display'] <= 40",
+                "value": 1
+                },
+                "value": 0
+                },
+                "tooltip": [
+                    {"field": "university", "type":"nominal", "title": "University"},
+                    {"field": "country", "type": "nominal", "title": "Country"},
+                    {"field": "international_students", "type": "quantitative", "format": ",", "title": "International students"},
+                    {"field": "faculty_count", "type": "quantitative", "format": ",", "title": "Faculty count"},
+                    {"field": "student_faculty_ratio", "type": "quantitative", "format": ",", "title": "Student faculty ratio"}
+                ]
+        }
+    }
+    ]
+}
