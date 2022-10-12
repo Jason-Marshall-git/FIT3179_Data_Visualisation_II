@@ -6,7 +6,8 @@
     "data": {"url": "https://raw.githubusercontent.com/Jason-Marshall-git/FIT3179_Data_Visualisation_II/main/data/uni_ranks.csv"},
     "mark": {
       "type": "line",
-      "point": true
+      "point": true,
+      "size": 5
     },
     "transform": [{
         "filter": {"field": "rank_display", "range": [1, 10]}
@@ -19,13 +20,21 @@
         "type": "nominal", 
         "title": "University", 
         "sort":"rank_display",
+        "scale":{
+          "scheme":"inferno"
+        },
         "legend": {
           "orient": "bottom",
           "direction": "vertical",
           "labelLimit": 300,
           "columns": 2
         }
-      }
+      },
+      "tooltip": [
+        {"field": "university", "type": "nominal", "title": "University"},
+        {"field": "year", "type": "ordinal", "title": "Year"},
+        {"field": "rank_display", "type": "quantitative", "title": "Rank"}
+      ]
     }
   }
   

@@ -55,7 +55,7 @@
             "scale": {"type": "log", "domain": [1, 100000]}
         },
         "color": {"legend": {
-            "orient": "right", "padding": 30, "offset": 80, "labelFontSize": 13, "titleFontSize": 17
+            "orient": "right", "padding": 30, "offset": 60, "labelFontSize": 13, "titleFontSize": 17
         }}
     },
     "layer": [
@@ -71,7 +71,7 @@
                         "domain": [1, 5, 10, 25, 50, 100],
                         "range": [10, 50, 150, 200, 300]
                     },
-                    "legend": {"format": ".1s", "orient": "right", "padding": 20, "labelFontSize": 13, "titleFontSize": 17}
+                    "legend": {"format": ".1s", "orient": "right", "padding": 30, "labelFontSize": 13, "titleFontSize": 17}
                 },
                 "color": {
                 "field": "region",
@@ -86,14 +86,7 @@
                         "Asia",
                         "Oceania"
                     ],
-                    "range": [
-                        "#e41a1c",
-                        "#984ea3",
-                        "#ff7f00",
-                        "#a6cee3",
-                        "#377eb8",
-                        "#a65628"
-                    ]
+                    "scheme": "inferno"
                 }
                 },
                 "opacity": { "value": 0.6},

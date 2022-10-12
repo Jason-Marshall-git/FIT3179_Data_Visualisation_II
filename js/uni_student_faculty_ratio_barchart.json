@@ -90,6 +90,20 @@
             {"aggregate":"mean", "field": "student_faculty_ratio", "type": "quantitative", "title": "Average student faculty ratio (globally)"}
           ]
         }
+      },
+      {
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "bottom",
+          "dx": -2,
+          "dy": 120,
+          "x": "width",
+          "text": "Mean",
+          "fontWeight": "normal",
+          "font": "sans-serif",
+          "size": 12
+        }
       }
     ]
   }
